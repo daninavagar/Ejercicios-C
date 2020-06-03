@@ -1,0 +1,44 @@
+\documentclass[a4paper,10pt,spanish]{article}
+
+\usepackage[spanish]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[upright]{fourier}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+
+\usepackage{amsmath}
+
+\usepackage[usenames]{color}
+
+\usepackage{listings}
+
+\lstset{
+    language=C,
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color[gray]{0.6},
+    stringstyle=\color[RGB]{40,80,20}
+}
+
+\newcommand{\inlinecode}[2][C]{\colorbox{white}{\lstinline[language=#1]$#2$}}
+
+
+%opening
+\title{Un Poco de Notación Matemática}
+\author{txemagon}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Vamos a poner por escrito en lenguaje matemático los ejemplos  de vectores que hemos ido haciendo hasta ahora.
+\end{abstract}
+
+\input{operaciones}
+
+
+\end{document}

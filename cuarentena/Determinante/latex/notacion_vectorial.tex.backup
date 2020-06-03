@@ -1,0 +1,217 @@
+\documentclass[a4paper,10pt,spanish]{article}
+
+\usepackage[spanish]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+
+\usepackage[usenames]{color}
+
+\usepackage{listings}
+
+\lstset{
+    language=C,
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color[gray]{0.6},
+    stringstyle=\color[RGB]{40,80,20}
+}
+
+\newcommand{\inlinecode}[2][C]{\colorbox{white}{\lstinline[language=#1]$#2$}}
+
+
+%opening
+\title{Un Poco de Notación Matemática}
+\author{txemagon}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Vamos a poner por escrito en lenguaje matemático los ejemplos  de vectores que hemos ido haciendo hasta ahora.
+\end{abstract}
+
+\section*{Notación de Vectores y Matrices}
+
+Decimos que un vector es algo de la forma $\vec{v} = (1, 2, 3)$ o también $ \vec{v} = 1 \vec{i} + 2 \vec{j} + 3 \vec{k} $.
+Y generalizamos diciendo: $\vec{v} = (x, y, z)$ o $ \vec{v} = x \vec{i} + y \vec{j} + z \vec{k} $.
+
+Cuando tenemos muchos vectores solemos poner los componentes así:
+
+\begin{gather*}
+\vec{x} = (x_1, x_2,  x_3) \\
+\vec{y} = (y_1, y_2,  y_3) \\
+\vec{z} = (z_1, z_2,  z_3)
+\end{gather*}
+
+Pero el señor Einstein inventó una notación que nos es muy
+adecuada para programar. Para él un vector quedaba representado
+por un elemento genérico $ x_i $ donde $i$ toma todos los valores
+de $1$ a $3$.
+
+Así que para Einstein un vector es algo así:
+
+$$ x_i \qquad \forall i=1 ... 3 $$
+
+Donde $ \forall$ se lee: \emph{para todo}.
+
+Y que nosotros escribimos muy fácilmente en programación.
+
+\begin{lstlisting}
+ for (int i=0; i<3; i++)
+    a[i]
+\end{lstlisting}
+
+Y su tipo de datos: \inlinecode{double a[3];}
+
+Decimos que la dimensión de este vector es: $3$
+
+Las matrices tienen una forma más o menos así:
+$$
+\begin{pmatrix}
+ 1 & 2 & 3\\
+ 4 & 5 & 6
+\end{pmatrix}
+$$
+
+Esta es una matriz de dimensión $2 \times 3$ que quiere
+decir que tiene $2$ filas y $3$ columnas.
+
+La matriz $ \mathcal{A} $ genérica sería algo así:
+
+$$
+\mathcal{A} = 
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13} & \dots  & a_{1n} \\
+ a_{21} & a_{22} & a_{23} & \dots  & a_{2n} \\
+ \vdots &        &        & \ddots & \\
+ a_{m1} & a_{m2} & \dots  &        & a_{mn} 
+\end{pmatrix}
+$$
+
+que el señor Einstein en su timepo representara como $a_{ij}$
+que para el representaba cualquier elemento genérico de la matriz.
+
+Un elemento genérico representa a toda la matriz pues basta con concretar
+un valor para $i$ y otro para $j$ para obtener todos y cada uno de los valores.
+
+Presentamos un cuadro resumen de las dos notaciones.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r|cc}
+         & Euclides        & Einstein \\ \hline
+  \emph{Vector} & $ \vec{v}     $ & $ v_i $  \\
+  \emph{Matriz} & $ \mathcal{A} $ & $ a_{ij} $
+\end{tabular}
+\end{table}
+
+\section*{Operaciones}
+
+\subsection*{Suma de Vectores}
+
+Sean los vectores $ \vec{v} $ y $ \vec{w} $.
+
+$$
+\begin{align*}
+\vec{v} &= (v_1, v_2, v_3) \\
+\vec{w} &= (w_1, w_2, w_3) \\
+\vec{z} = \vec{v} + \vec{w} &= (v_1+w_1, v_2+w_2, v_3+w_3) 
+\end{align*}
+$$
+
+En notación de Einstein:
+
+$$ z_i = v_i + w_i $$
+
+Y en c:
+
+\begin{lstlisting}
+ for (int i=0; i<3; i++)
+    z[i] = v[i] + w[i]
+\end{lstlisting}
+
+
+Que, como se ve, es una notación muy conveniente para un programador.
+
+
+
+\subsection*{Producto Escalar}
+
+Sean los vectores $ \vec{v} $ y $ \vec{w} $.
+
+$$
+\begin{align*}
+\vec{v} &= (v_1, v_2, v_3) \\
+\vec{w} &= (w_1, w_2, w_3) \\
+p = \vec{v} \cdot \vec{w} &= v_1w_1 + v_2w_2 + v_3w_3
+\end{align*}
+$$
+
+En la notación tradicional ponemos:
+
+$$ p = v_1w_1 + v_2w_2 + v_3w_3 = \sum_{i=1}^{3} v_iw_i $$
+
+El símbolo $ \sum $ se llama sumatorio y quiere decir que se le van dando 
+valores a i y se van sumando a otros valores.
+
+Einstein diría:
+
+$$ p = v_iw_i $$
+
+Y se dice que hay una contracción en $i$. Como $p$ no tiene subíndice $i$ hay 
+que ir dándole todos los valores y acumulando.
+
+En programación hacemos:
+
+\begin{lstlisting}
+ for (int i=0; i<3; i++)
+    z += v[i] * w[i]
+    
+\end{lstlisting}
+
+\subsection*{Determinante}
+
+Sea la matriz $ \mathcal{A} $. Su determinante es la suma de los productos de sus diagonales principales
+menos la resta de sus secundarias.
+
+$$
+det A = \left| A \right| = 
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13} \\
+ a_{21} & a_{22} & a_{23} \\
+ a_{31} & a_{32} & a_{33} 
+\end{vmatrix}
+$$
+
+\begin{multline*}
+ \left| A \right| = a_{11}a_{22}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - \\
+ - \left( a_{13}a_{22}a_{31} + a_{23}a_{32}a_{11} + a_{33}a_{12}a_{21} \right)
+\end{multline*}
+
+Que si hacemos el truco de que cuando salimos por abajo entramos por arriba:
+\begin{multline*}
+ \left| A \right| = a_{11}a_{22}a_{33} + a_{21}a_{32}a_{43} + a_{31}a_{42}a_{53} - \\
+ - \left( a_{13}a_{22}a_{31} + a_{23}a_{32}a_{41} + a_{33}a_{42}a_{51} \right)
+\end{multline*}
+
+\subsection*{Suma de la diagonal}
+
+$$ S = a_{11} + a_{22} + a_{33} $$
+
+Einstein:
+
+$$ S = a_{ii} $$
+
+En C:
+
+\begin{lstlisting}
+ for (int i=0; i<3; i++)
+    s += a[i][i]
+    
+\end{lstlisting}
+
+\end{document}
