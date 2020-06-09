@@ -28,7 +28,7 @@ void title () {
 
 void Pedir_Datos(const char *frase) {
     printf ("Dime la frase: \n");
-    scanf ("%s", *frase);
+    scanf ("%s", frase);
 }
 
 void imprimir_array(const char *letra){
