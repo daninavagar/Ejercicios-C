@@ -3,7 +3,7 @@
 
 void title () {
     system("clear");
-    system("toilet -f pagga /* LO QUE TU QUIERAS*/");
+    system("toilet -f pagga --metal ");
 }
 
 
