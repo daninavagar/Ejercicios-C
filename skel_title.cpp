@@ -4,6 +4,7 @@
 void title () {
     system("clear");
     system("toilet -f pagga --metal ");
+    printf ("\n\n");
 }
 
 
