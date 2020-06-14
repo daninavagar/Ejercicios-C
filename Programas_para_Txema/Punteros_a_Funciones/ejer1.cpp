@@ -48,8 +48,9 @@ enum TElegir Eleccion () {
 
 void pedir_datos(double *base, double *altura) {
 
-    printf ("Dime un valor para base y la altura: ");
+    printf ("Dime un valor para base: ");
     scanf ("%lf", base);
+    printf ("Valor para la altura: ");
     scanf ("%lf", altura);
     printf("\n");
 }
@@ -88,7 +89,7 @@ int main (int argc, char *argv[]) {
 
     pedir_datos(&base, &altura);
 
-    printf ("Area del %s = %.2lf", nombre[elegir], (*area)(base, altura));
+    printf ("Area del %s = %.2lf\n", nombre[elegir], (*area)(base, altura));
     }
 
     return EXIT_SUCCESS;
