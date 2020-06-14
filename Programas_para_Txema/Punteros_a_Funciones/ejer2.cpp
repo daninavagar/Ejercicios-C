@@ -16,8 +16,6 @@
  *
  * =====================================================================================
  */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -37,34 +35,45 @@ double Funcion1(double x){
     return 2*x *5;
 }
 
+double Funcion2(double x){
+    return 5*pow(x,2) + 3*x -2;
+}
+
 int main (int argc, char *argv[]) {
 
     title();
+    printf("ELIGE UNA DE LAS OPCIONES\n");
+    printf ( "Primera Opcion         1 --> 2x*5\n"
+            "Segunda Opcion         2 --> 5x² + 3x -2\n"
+            "Tercera Opcion         3 --> SALIR\n"
+            "\n\n"
+    );
     double x;
     int opcion;
-
+    bool exit = false;
     do {
-        printf ("                                              \r");
-        printf ("Dime la opcion que quieres: ");
-        scanf ("%i", &opcion);
-        fflush (stdout);
-        printf ("\x1B[1A");
-    } while (opcion < 0);
-    printf ("\n");
-
-    double (*func[]) (double) = { &Funcion1 };
-//    printf ("")
-    switch (opcion) {
-        case 1:
-            PedirDatos(&x);
-            Funcion1(x);
-            printf ("\tEl resultado: %.2lf\n", func[opcion - 1](x));
-            break;
-        default:
-            printf ("Porfa, numeros del 1 al 3");
-
-
-    }
+            printf ("Opcion : ");
+            scanf ("%i", &opcion);
+            double (*func[]) (double) = { &Funcion1, &Funcion2 };
+            switch (opcion) {
+                case 1:
+                    PedirDatos(&x);
+                    Funcion1(x);
+                    printf ("\tEl resultado: %.2lf\n", func[opcion - 1](x));
+                    printf ("\n\n");
+                    break;
+                case 2:
+                    PedirDatos(&x);
+                    Funcion2(x);
+                    printf("\tEl resultado: %.2lf\n", func[opcion - 1](x));
+                    printf ("\n\n");
+                    break;
+                case 3:
+                    printf("\nGRACIAS POR VENIR\n");
+                    exit = true;
+                    break;
+                }
+            } while (!exit);
 
     return EXIT_SUCCESS;
 }
