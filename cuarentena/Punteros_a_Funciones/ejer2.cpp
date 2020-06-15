@@ -72,16 +72,16 @@ void preguntar_operando (double *op1, double *op2) {
 int main (int argc, char *argv[]) {
 
 	title();
-        double op1, op2;
-        double (*eleccion) (double, double) = &F;
+    double op1, op2;
+    double (*eleccion) (double, double) = &F;
 
-        enum TOpcion opcion = menu ();
-        eleccion = eleccion_func[opcion];
+    enum TOpcion opcion = menu ();
+    eleccion = eleccion_func[opcion];
 
-        preguntar_operando (&op1, &op2);
+    preguntar_operando (&op1, &op2);
 
-        printf ("Has elegido %s y su resultado es %.2lf \n", nombre[opcion],(*eleccion)(op1, op2));
-        printf ("YA HEMOS ACABADO, BYE!\n");
+    printf ("Has elegido %s y su resultado es %.2lf \n", nombre[opcion],(*eleccion)(op1, op2));
+    printf ("YA HEMOS ACABADO, BYE!\n");
 
     return EXIT_SUCCESS;
 }
