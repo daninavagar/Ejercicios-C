@@ -30,24 +30,24 @@ void title () {
 }
 
 
-void pedir_datos(double matriz[N][N]) {
+void pedir_datos(double m[N][N]) {
     
     for (int fila=0; fila<N; fila++)
         for (int columna=0; columna<N; columna++){
-            printf ("(%i, %i)", fila + 1, columna + 1);
-            scanf ("%lf", &matriz[fila][columna]);
+            printf (" Elemento (%i, %i): ", fila + 1, columna + 1);
+            scanf ("%lf", &m[fila][columna]);
         }
 }
 
-void impimir_datos(double matriz[N][N]) {
+void imprimir_datos(double m[N][N]) {
 
-
-    printf ("\n");
-    for (int fila=0; fila<N; fila++)
-        for (int columna=0; columna<N; columna++){
-            printf ("|%6.2lf|", matriz[fila][columna]);
-            printf ("\n");
-            }
+    printf ("\n\n");
+    for (int fila=0; fila<N; fila++){
+        for (int columna=0; columna<N; columna++)
+            printf ("  |%6.2lf|  ", m[fila][columna]);
+        printf ("\n");    
+    }
+    printf("\n\n");
 
 }
 
@@ -62,9 +62,9 @@ int main (int argc, char *argv[]) {
     title();
 
     double matriz[N][N];
-    double determinante = 0, producto;
+    double determinante = 0, det1 = 0, producto;
 
-    pedir_datos(matriz);
+    pedir_datos (matriz);
     for (int j=0; j<N; j++) { /* o: offset. Dice si empiezo en la col 0 en la 1 o en la 2 la diagonal. */
             producto = 1;
             for (int n=0; n<N; n++)  /* Número de elemento dentro de la diagonal */
@@ -76,11 +76,14 @@ int main (int argc, char *argv[]) {
         producto = 1;
         for (int n=0; n<N; n++)
             producto *= matriz[n][der (N - 1 - n - j)];
-        determinante -= producto;
+        det1 -= producto;
     }
-    imprimir_datos(matriz);
 
-    printf ("\n\n Determinante = \n\t %.2lf\n\n", determinante);
+
+    imprimir_datos (matriz);
+    printf ("\n\n Determinante(suma) = %.2lf\n\n", determinante);
+    printf("\n\n Determinante(resta) = %.2lf\n\n", det1);
+    printf("\n\n");
 
 
 

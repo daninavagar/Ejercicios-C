@@ -21,7 +21,7 @@ void imprimir (double m[N][N]) {
     printf ("\n\n");
     for (int f=0; f<N; f++){
         for (int c=0; c<N; c++)
-            printf ("%6.2lf", m[f][c]);
+            printf ("|%6.2lf|", m[f][c]);
         printf ("\n");
     }
     printf ("\n");

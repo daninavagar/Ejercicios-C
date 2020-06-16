@@ -26,6 +26,7 @@
 
 #define N 8
 
+
 void title () {
     system("clear");
     system("toilet -f pagga --metal ALL_OF_THEM");
@@ -235,6 +236,7 @@ void OrdenarNumeros() {
 	int A[N];
     int *o[N];
 
+    /* Genera numeros aleatorios */
     srand(time (NULL));
     for (int i=0; i<N; i++)
     	A[i] = rand () % 20 + 1;
@@ -328,6 +330,76 @@ void PunterosArrays () {
 	} while (!exit);
 
 }
+
+
+
+
+/* MATRICES */
+
+void pedir_datos(double m[3][3]) {
+    
+    for (int fila=0; fila<3; fila++)
+        for (int columna=0; columna<3; columna++){
+            printf (" Elemento (%i, %i): ", fila + 1, columna + 1);
+            scanf ("%lf", &m[fila][columna]);
+        }
+}
+
+void imprimir_datos(double m[3][3]) {
+
+    printf ("\n\n");
+    for (int fila=0; fila<3; fila++){
+        for (int columna=0; columna<3; columna++)
+            printf ("  |%6.2lf|  ", m[fila][columna]);
+        printf ("\n");    
+    }
+    printf("\n\n");
+
+}
+
+int der (int columna) {
+    if (columna < 0)
+        return columna + 3;
+    return columna;
+}
+
+void Matrices() {
+
+    
+	system("clear");
+	system ("toilet -f pagga --gay MATRICES");
+    double matriz[3][3];
+    double determinante = 0, det1 = 0, producto;
+
+    pedir_datos (matriz);
+    
+
+    for (int j=0; j<3; j++) { /* o: offset. Dice si empiezo en la col 0 en la 1 o en la 2 la diagonal. */
+            producto = 1;
+            for (int n=0; n<3; n++)  /* Número de elemento dentro de la diagonal */
+                    producto *= matriz[n][(n+j) % 3];
+            determinante += producto;
+        }
+
+    for (int j=N-1; j>=0; j--){
+        producto = 1;
+        for (int n=0; n<3; n++)
+            producto *= matriz[n][der (3 - 1 - n - j)];
+        det1 -= producto;
+    }
+
+
+    imprimir_datos (matriz);
+    printf ("\n\n Determinante(suma) = %.2lf\n\n", determinante);
+    printf("\n\n Determinante(resta) = %.2lf\n\n", det1);
+    printf("\n\n");
+
+}
+
+
+
+
+
 int main (int argc, char *argv[]) {
 
     title();
@@ -375,10 +447,11 @@ int main (int argc, char *argv[]) {
             	printf("\nTe dejo 10 segundos para comprobar el resultado\n");
             	system ("sleep 10");
             	break;
-            // case 6: 
-            // 	Matrices();
-            // 	system ("sleep 10");
-            // 	break;
+            case 6: 
+            	Matrices();
+            	printf("\nTe dejo 10 segundos para comprobar el resultado\n");
+            	system ("sleep 10");
+            	break;
             case 7:
             	printf ("GRACIAS POR APROBARME TXEMA ♥");
             	exit = true;
