@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 
 #define N 8
 
@@ -149,72 +150,74 @@ void Numeros_Ordinales() {
 
 /* PUNTEROS A FUNCIONES */
 
-enum TOpcion {Funcion1, Funcion2, FTriangulo, FCuadrado};
-const char *nombre[] = {"Funcion1", "Funcion2", "FTriangulo", "FCuadrado"};
+enum TOpcion {primeraf, casa, FTriangulo, FCuadrado};
+const char *nombre[] = {"F1", "F2", "FTriangulo", "FCuadrado"};
 
+double Funcion1 (double x, double) {
+    return 2*x * 5;
+}
 
+double Funcion2 (double x, double) {
+    return 5*pow(x,2) + 3*x -2;
+}
 
-void Pedir2Datos(double *a, double *b) {
-	printf ("Valor para a: ");
-	scanf ("%lf", a);
-	printf ("Valor para b: ");
-	scanf ("%lf", b);
+double Triangulo(double x , double y) {
+    return x * y / 2;
+}
+
+double Cuadrado(double x , double y) {
+    return x * y;
 }
 
 
-double Funcion1(double a, double b){
-    return 2*a *5;
-}
-
-double Funcion2(double a, double b){
-    return 5*pow(a,2) + 3*a -2;
-}
-
-double FTriangulo(double a , double b) {
-	return a * b / 2;
-}
-
-double FCuadrado(double a , double b) {
-	return a * b;
-}
-
-double F (double, double) {
-	fprintf(stderr, "introduce un numero corrrecto\n");
-	exit(1);
-}
-
-double (*func[]) (double, double) = { &Funcion1, &Funcion2, &FTriangulo, &FCuadrado, &F};
+double (*eleccion[])(double, double) = {&Funcion1, &Funcion2, &Triangulo, &Cuadrado};
 enum TOpcion Menu () {
 	int opcion;
+    do {
+
 	printf("ELIGE UNA DE LAS OPCIONES\n");
-		    printf ( 	"\tFuncion1 		1 --> 2x*5\n"
-				        "\tFuncion2   		2 --> 5x² + 3x -2\n"
-				        "\tFTriangulo 		3 --> Area del Triangulo\n"
-				        "\tFCuadrado 		4 --> Area del Cuadrado\n"
-				        // "\tF     			5 --> SALIR\n"
+		    printf ( 	"\tPrimera funcion 		1 --> 2x*5\n"
+				        "\tSegunda funcion   		2 --> 5x² + 3x -2\n"
+				        "\tTercera funcion 		3 --> Area del Triangulo\n"
+				        "\tCuarta funcion		4 --> Area del Cuadrado\n"
             			"Opcion : "
             			"\n\n"
             		);
             scanf ("%i", &opcion);
+    } while (!exit);
     opcion --;
     return (enum TOpcion) opcion;
 }
 
-void PunterosFunciones() {
 
-    system("clear");
-    system("toilet -f pagga --gay P. FUNCIONES");
-    double a, b;
+void Pedir2Datos (double *x, double *y) {
+    printf("Dime valor para la x: ");
+    scanf ("%lf", x);
+    printf("Dime valor para la y: ");
+    scanf ("%lf", y);
+}
+
+void Pedir1Datos(double *x, double *y) {
+    printf ("Dime la x:" );
+    scanf ("%lf", x);
+}
+
+void PunterosFunciones()
+{
+    /* code */
+    system ("clear");
+    double x, y;
+    double (*area) (double, double);
+
+    enum TOpcion opcion = Menu();
+    area = eleccion[opcion];
+
+    if (opcion == 0 || opcion == 1){
+        Pedir1Datos(&x, &y);
+    } else 
+        Pedir2Datos(&x, &y);
+    printf ("El resultado es %.2lf\n", (*area)(x, y));
     
-    double (*funcion) (double, double) = &F;
-    enum TOpcion opcion = Menu ();
-    funcion = fun[opcion];
-
-    Pedir2Datos(&a, &b);
-
-    printf ("El resultado es: %.2lf \n", nombre[opcion], (*func)(a, b));
-    
-
 }
 
 /* PUNTEROS A ARRAYS*/
@@ -229,8 +232,12 @@ void imprimir (int *a[N]) {
 void OrdenarNumeros() {
 	system("clear");
 	system ("toilet -f pagga --gay O. NUMEROS");
-	int A[N] = {1,2,5,3,7,4,6,9};
+	int A[N];
     int *o[N];
+
+    srand(time (NULL));
+    for (int i=0; i<N; i++)
+    	A[i] = rand () % 20 + 1;
 
     for (int i=0; i<N; i++)
         o[i] = &A[i];
@@ -345,22 +352,27 @@ int main (int argc, char *argv[]) {
         switch (opcion) {
             case 1:
                 Sucesion_Fibonacci();
+                printf("\nTe dejo 10 segundos para comprobar el resultado\n");
                 system ("sleep 10");          
                 break;
             case 2:
                 Primos();
+                printf("\nTe dejo 10 segundos para comprobar el resultado\n");
                 system ("sleep 10"); 
                 break;
             case 3:
                 Numeros_Ordinales();
+                printf("\nTe dejo 10 segundos para comprobar el resultado\n");
                 system ("sleep 10"); 
                 break;
             case 4:
                 PunterosFunciones();
+                printf("\nTe dejo 10 segundos para comprobar el resultado\n");
                 system ("sleep 10"); 
                 break;
             case 5:
             	PunterosArrays();
+            	printf("\nTe dejo 10 segundos para comprobar el resultado\n");
             	system ("sleep 10");
             	break;
             // case 6: 
