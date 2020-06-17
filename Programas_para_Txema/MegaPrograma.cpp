@@ -19,10 +19,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+
 #include <math.h>
 #include <string.h>
-#include <time.h>
+
 
 #define N 8
 
@@ -52,7 +52,7 @@ void Sucesion_Fibonacci () {
       printf ("Dime cuantos numeros quieres que sace de la sucesion: ");
       scanf ("%i", &cantidad);
       fflush(stdout);
-      printf ("\x1B[1Am"); /* Enseñado por Diego */
+      printf ("\x1B[1A"); /* Enseñado por Diego */
     } while (cantidad < 0);
     printf ("\n");
       for (numero = 0; numero < cantidad; ++numero) {
@@ -75,7 +75,7 @@ int numero_de_divisores(int numero, int divisor, int cantidad) { /* SI ES RECURS
     return cantidad;
 }
 
-bool es_primo(int primo, int numero) { /* no recursiva*/
+bool es_primo(int primo) { /* no recursiva*/
 
 
     if ( primo == 2)
@@ -99,7 +99,7 @@ void Primos() {
 
     primo = numero_de_divisores(numero, divisor, cantidad);
 
-    if (es_primo(primo, numero) == true){
+    if (es_primo(primo) == true){
         printf ("El numero es primo\n");
     } else
         printf ("El numero no es primo\n");
@@ -151,8 +151,6 @@ void Numeros_Ordinales() {
 
 /* PUNTEROS A FUNCIONES */
 
-enum TOpcion {primeraf, casa, FTriangulo, FCuadrado};
-const char *nombre[] = {"F1", "F2", "FTriangulo", "FCuadrado"};
 
 double Funcion1 (double x, double) {
     return 2*x * 5;
@@ -171,16 +169,17 @@ double Cuadrado(double x , double y) {
 }
 
 
-double (*eleccion[])(double, double) = {&Funcion1, &Funcion2, &Triangulo, &Cuadrado};
+enum TOpcion {primeraf, casa, FTriangulo, FCuadrado};
+
 enum TOpcion Menu () {
 	int opcion;
     do {
 
 	printf("ELIGE UNA DE LAS OPCIONES\n");
-		    printf ( 	"\tPrimera funcion 		1 --> 2x*5\n"
+		    printf ( 	"\tPrimera funcion 			1 --> 2x*5\n"
 				        "\tSegunda funcion   		2 --> 5x² + 3x -2\n"
-				        "\tTercera funcion 		3 --> Area del Triangulo\n"
-				        "\tCuarta funcion		4 --> Area del Cuadrado\n"
+				        "\tTercera funcion 			3 --> Area del Triangulo\n"
+				        "\tCuarta funcion			4 --> Area del Cuadrado\n"
             			"Opcion : "
             			"\n\n"
             		);
@@ -190,6 +189,7 @@ enum TOpcion Menu () {
     return (enum TOpcion) opcion;
 }
 
+double (*eleccion[])(double, double) = {&Funcion1, &Funcion2, &Triangulo, &Cuadrado};
 
 void Pedir2Datos (double *x, double *y) {
     printf("Dime valor para la x: ");
@@ -207,6 +207,7 @@ void PunterosFunciones()
 {
     /* code */
     system ("clear");
+    system ("toilet -f pagga --gay P. FUNCIONES");
     double x, y;
     double (*area) (double, double);
 
@@ -223,46 +224,12 @@ void PunterosFunciones()
 
 /* PUNTEROS A ARRAYS*/
 
-void imprimir (int *a[N]) {
-    for (int i=0; i<N; i++)
-        printf ("%i", *a[i]);
-    printf ("\n");
-}
-
-
-void OrdenarNumeros() {
-	system("clear");
-	system ("toilet -f pagga --gay O. NUMEROS");
-	int A[N];
-    int *o[N];
-
-    /* Genera numeros aleatorios */
-    srand(time (NULL));
-    for (int i=0; i<N; i++)
-    	A[i] = rand () % 20 + 1;
-
-    for (int i=0; i<N; i++)
-        o[i] = &A[i];
-    printf ("\nMuestra array sin ordenar\n");
-    imprimir (o);
-    for (int p=0; p<N-1; p++)
-        for (int i=0; i<N-1; i++){
-            if (*o[i] < *o[i+1]) {
-                int *b = o[i+1];
-                o[i+1] = o[i];
-                o[i] = b;
-            }
-        }
-    printf("\nMuestra el array ordenado\n");
-    imprimir(o);
-}
-
 const char *lista[] = {
 	"Windows",
-	"es",
+	"Es",
 	"Mejor",
-	"que",
-	"linux",
+	"Que",
+	"Linux",
 	NULL
 };
 void imprimir_palabra (const char *a[]) {
@@ -279,6 +246,8 @@ void OrdenarPalabras() {
 
 
     imprimir_palabra (lista);
+
+
     for (int p=0; lista[p+1]!=NULL; p++){
     	menor = p;
         for (int i=p+1; lista[i]!=NULL ; i++)
@@ -299,107 +268,6 @@ void OrdenarPalabras() {
 }
 
 
-void PunterosArrays () {
-	system("clear");
-	system ("toilet -f pagga --gay PUNTEROS_ARRAYS");
-	int opcion;
-	bool exit = false;
-	do {
-		printf ("HOLA, EN ESTE BONITO PROGRAMA PUEDES HACER DE TODO\n\n");
-       	printf ("QUE OPCION QUIERES\n"
-            "\n"
-            "\t1.- Ordenacion de numeros\n"
-            "\t2.- Ordenacion de palabras\n"
-            "\t3.- Irse a casita \n"
-            "\n"
-            "Opcion: ");
-    	scanf ("%i", &opcion);
-
-    	switch (opcion) {
-    		case 1:
-    			OrdenarNumeros();
-    			break;
-    		case 2: 
-    			OrdenarPalabras();
-    			break;
-    		case 3:
-    			printf ("GRACIAS POR VENIR");
-    			exit = true;
-    	}
-
-	} while (!exit);
-
-}
-
-
-
-
-/* MATRICES */
-
-void pedir_datos(double m[3][3]) {
-    
-    for (int fila=0; fila<3; fila++)
-        for (int columna=0; columna<3; columna++){
-            printf (" Elemento (%i, %i): ", fila + 1, columna + 1);
-            scanf ("%lf", &m[fila][columna]);
-        }
-}
-
-void imprimir_datos(double m[3][3]) {
-
-    printf ("\n\n");
-    for (int fila=0; fila<3; fila++){
-        for (int columna=0; columna<3; columna++)
-            printf ("  |%6.2lf|  ", m[fila][columna]);
-        printf ("\n");    
-    }
-    printf("\n\n");
-
-}
-
-int der (int columna) {
-    if (columna < 0)
-        return columna + 3;
-    return columna;
-}
-
-void Matrices() {
-
-    
-	system("clear");
-	system ("toilet -f pagga --gay MATRICES");
-    double matriz[3][3];
-    double determinante = 0, det1 = 0, producto;
-
-    pedir_datos (matriz);
-    
-
-    for (int j=0; j<3; j++) { /* o: offset. Dice si empiezo en la col 0 en la 1 o en la 2 la diagonal. */
-            producto = 1;
-            for (int n=0; n<3; n++)  /* Número de elemento dentro de la diagonal */
-                    producto *= matriz[n][(n+j) % 3];
-            determinante += producto;
-        }
-
-    for (int j=N-1; j>=0; j--){
-        producto = 1;
-        for (int n=0; n<3; n++)
-            producto *= matriz[n][der (3 - 1 - n - j)];
-        det1 -= producto;
-    }
-
-
-    imprimir_datos (matriz);
-    printf ("\n\n Determinante(suma) = %.2lf\n\n", determinante);
-    printf("\n\n Determinante(resta) = %.2lf\n\n", det1);
-    printf("\n\n");
-
-}
-
-
-
-
-
 int main (int argc, char *argv[]) {
 
     title();
@@ -414,9 +282,8 @@ int main (int argc, char *argv[]) {
             "\t2.- Numeros Primos\n"
             "\t3.- Numeros Ordinales\n"
             "\t4.- Punteros a Funciones\n"
-            "\t5.- Punteros a Arrays\n"
-            "\t6.- Matrices\n"
-            "\t7.- Irse a casita \n"
+            "\t5.- Punteros a Arrays, Ordenacion de palabras\n"
+            "\t6.- Irse a casita \n"
             "\n"
             "Opcion: ");
     	scanf ("%i", &opcion);
@@ -443,16 +310,11 @@ int main (int argc, char *argv[]) {
                 system ("sleep 10"); 
                 break;
             case 5:
-            	PunterosArrays();
+            	OrdenarPalabras();
             	printf("\nTe dejo 10 segundos para comprobar el resultado\n");
             	system ("sleep 10");
             	break;
-            case 6: 
-            	Matrices();
-            	printf("\nTe dejo 10 segundos para comprobar el resultado\n");
-            	system ("sleep 10");
-            	break;
-            case 7:
+            case 6:
             	printf ("GRACIAS POR APROBARME TXEMA ♥");
             	exit = true;
             	break;

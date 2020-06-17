@@ -43,7 +43,7 @@ int main (int argc, char *argv[]) {
     title ();
     pedir_datos (matriz);
 
-    /* Suma de las diagonales ppales */
+    
 
     for (int o=N-1; o>=0; o--){
         producto = 1;
