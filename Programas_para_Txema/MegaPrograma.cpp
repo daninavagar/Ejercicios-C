@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <math.h>
 #include <string.h>
 
@@ -261,6 +260,8 @@ void OrdenarPalabras() {
 
             }
     }
+    
+
         
     printf("\nMuestra el array ordenado\n");
 
