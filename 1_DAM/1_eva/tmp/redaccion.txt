@@ -1,0 +1,50 @@
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola dani y este es txema
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+hola carlos y este es ovi
+ 
+
+para guardar un linea de codigo :w y para volver a inctrustar ese archivo :r
+
+para insertar un comando. te vas al comando visual, seleccionas la linea que quieres sustituir y pulsas exclamacion "!", y a partir de ahi escribas el comando que quieras
+
+
+total 11908
+drwxr-xr-x 2 dnavarro 2000    4096 oct 29 10:08 .
+drwxr-xr-x 3 dnavarro 2000    4096 oct 29 09:43 ..
+-rw-r--r-- 1 dnavarro 2000 5784758 oct 29 10:08 hola.cpp
+-rw-r--r-- 1 dnavarro 2000     860 oct 29 10:07 redaccion.txt
+-rw-r--r-- 1 dnavarro 2000  536576 oct 29 10:11 .redaccion.txt.swp
+-rw-r--r-- 1 dnavarro 2000 5784758 oct 28 11:19 shakespeare.txt
+-rw-r--r-- 1 dnavarro 2000   69632 oct 29 10:07 .shakespeare.txt.swp
+
+
+mirar comando grep
+comando find
+locate 

@@ -1,0 +1,72 @@
+APUNTES C
+
+TOKEN--> componentes sintacticos en el vocabulario del lenguaje C.
+  - Palabras clave
+  - Identificadores
+  - Constantes
+  - Cadenas de caracteres
+  - Operadores
+  - Separadores
+  - Comentarios
+  - Signos de punutacion
+
+
+PALABRAS CLAVE
+  - auto
+  - break
+  - case
+  - char
+  - const. Congela una varible.
+  - continue. una vuelta mas al bucle
+  - default 
+  - do
+  - double
+  - else
+  - enum. Define constantes
+  - extern. variable externa del programa
+  - float
+  - for.
+  - goto
+  - if
+  - int
+  - long
+  - register. Guarda varible en microprocesador.
+  - return. 
+  - short
+  - signed
+  - sizeof. Cuantos bytes ocupa una variable.
+  - static. hace que la variables locales no terminen con la funcion.
+  - struct. hace una varible compuesta de muchas variables
+  - switch. mira lo que vale una varible para aplicar un caso o no
+  - typedef. hace un alias
+  - union. mete 2 variables en la celda o posicion de memoria.
+  - unsigned. otro modificador de los tipos de datos
+  - void. Tipo de datos
+  - volatile. Otro modificador de tipo de datos. Se le pone a varibles que puede canbiar fuera del programa.
+  - while
+
+
+
+
+IDENTIFICADORES--> nombre con el que se hace referencia a una función o al contenido de la memoria.
+
+
+
+
+
+
+
+
+g++ -g nombrePrograma.cpp -o nombreprograma --> maquetar desde la terminal
+
+gdb -q nombre --> quita errores del programa
+
+dentro de gbd
+  run --> ejecuta el programa
+  break --> punto de ruptura
+  next --> ejecuta solo una linea
+  lis --> te muestra el código del programa.
+
+
+
+obdjump -d --dissambler-option

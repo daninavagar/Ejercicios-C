@@ -1,0 +1,6 @@
+para bajar los cambios a la terminal. git pull
+para actulizar los cambios en la pagina web 
+  git add .
+  git commit -m "algo"
+  git push
+  PARA ABRIR CUALQUIER ARCHIVO EN TERMINAL EVINCE "NOMBRE" SIN COMILLAS

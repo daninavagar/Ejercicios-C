@@ -1,0 +1,173 @@
+atajos
+ctrl+alt+t→ abre terminal
+ctrl+shitf+t → abre otra pesteaña en el terminal
+ctrl+D.  salir del programa
+ctrl+C. romper el programa
+ctrl+shitf+c. copiar
+ctrl+shitf+v. pegar
+ctrl+z. pone el proceso en segundo plano.
+
+
+
+
+
+comandos bascios
+
+OD. muestra los bytes del fichero
+od -txt1 a.txt
+    od        comando
+    -tx1 a.txt    argumentos
+    -t        opcion
+    x1        parametros
+FILE. muestra que ficheros es
+TABULADOR.
+gedit. abre un fichero de texto. (igual que nano, pero fuera del terminal).
+	- para pausar el proceso ctrl+z
+	- jobs. para ver los procesos pausados
+	- fg "numero". vuelve a reanudar el proceso.
+pwd. muestra el directorio donde te encuentras
+
+
+archivo. fichero que contiene archivos (.RAR, .ZIP)
+POSIX. Estandar del SSOO (ls -l, ls -s = ls -ls)
+
+
+APUNTES
+
+Magic Number. Caracteres alfanumericos que de manera codificada identifican un archivo, generalmente ubicados al comenzar dicho archivo.
+
+carpetas de directorio raiz
+
+FHS. estandar de un sistema de operativo que lo obliga a tener carpetas.
+	-boot. cosas necesarias para el arranque del sistema.
+	-bin. estan los ejecutables del sistema operaitvo.
+	-sbin. ejecutables para el administrador de sistemas
+	-usr. las instalaciones de la distribucion.
+		-bin. ejecutlabes de la distrucion
+		-sbin.ejecutables para el administrador de la distrubcion.
+		-local. programas donde el administador del sistema instala para todos los usuarios.
+		-share. las bibliotecas compartidas no comppiladas
+		-lib. Se encuentran las librerias compartidas por otros programas.
+		-include. Estan las cabezeras de las librerias.
+	-etc. esta la configuracion general de todos los programas.
+	-var. ficheros de programas que se cambian a menudo.
+	-srv. fichero para dar servicio a una página web.
+	-dev. genera un fichero que en realiad, representa el hardware.
+		-stdout. todo lo escrito a la pantalla (teclado)
+		-staderr. todo lo escrito en la pantalla
+		-stadin.
+	-proc. procesos se refiere a los programas que se estan ejecutando.
+	-sys. representa cosas internas del pc como los buses.
+	-media. se montan los discos del sistema.
+	-tmp. carpeta temporal. si escribes algo alli al apagar al ordenador se borra.
+	-root. es la carpeta home del root
+	-home. es la carpeta personal de todos los usuarios.
+
+NAVARRO NO TE COPIES
+		
+		
+CONFIGURACION VIM
+vim.rc 
+
+
+set nu --> numera las lineas
+set cindent --> indentar sangria
+set sw=4 --> meter 4 espacios
+set expandtab --> cuando le de al tabulador, mete 4 espacios
+set softtabstop=2
+syntax on --> cambias de color las palabras especiales 
+
+source ~/.vim/vundle.vim
+
+set t_Co=256 --> los colores de RGB 0-256
+set syntax=on
+" set background=dark --> cambia el esquema de colores 
+colorscheme distinguished
+
+imap <C-c> <CR><Esc>O
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+
+set backspace=2
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
+
+
+
+MOVIMIENTOS VIM
+
+  1G --> linea 1
+  G --> Final Fichero
+  ^B --> back 1 Pantalla
+<<<<<<< HEAD
+  
+=======
+  ^F --> Forward 1 Pantalla
+  ^U --> up 1/2 pantalla
+  ^D --> Down 1/2 pantalla
+  - --> cominezo linea anterior
+  + --> comienzo linea siguiente
+  H --> High 1º linea visible
+  L --> Low Ultima linea visible
+  3H --> tercera linea visible
+  3L
+  M --> Middle (Media pantalla)
+  WEB --> word, end, back
+  | --> columna 1
+  0 --> columna 1
+
+
+* para guardar una linea de codigo usamos :w mas la ruta y despues para volver a usar o incrustar esa linea de codigo en otro archivo :r mas ruta   
+
+* para insertar un comando en una linea, te vas al comando visual, seleccionas la linea que quieres sustitur y pulsas exclamacion "! y a partir de ahi escribes el comando que quieras
+
+mar oct 29 16:40:45 CET 2019
+
+
+>>>>>>> 0b5e5d6ffacb6a97e561bd365a385a8f7d64cd61
+
+lun nov  4 10:49:47 CET 2019
+
+libro de C
+Aritmetica modular
+
+
+FUNCION CALL [FUNCIONES] --> trozos de codigo que se repiten con frecuencia
+jp (JUMP). salta a una linea en concreto hacia delante
+jr (jump relative). salta una linnea en concreto hacia atras.
+
+  - estructuras iterativas. ejemplo si la funcion en verdadero, salta a la linea 3 y si es falso salta a la linea 5.
+  - estrucutura alternativas. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
